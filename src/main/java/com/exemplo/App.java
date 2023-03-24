@@ -63,8 +63,25 @@ public class App
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        driver.get("https://demo.automationtesting.in/Datepicker.html");
+        try {
+        	  try {
+      			Thread.sleep(2000);
+      		} catch (InterruptedException e) {
+      			// TODO Auto-generated catch block
+      			e.printStackTrace();
+      		}
+      	driver.get("https://demo.automationtesting.in/Datepicker.html");
+        	  WebElement datepicker1 = driver.findElement(By.id("datepicker1"));
+        datepicker1.click();
+        WebElement monthYear = driver.findElement(By.xpath("//div[@class='datepicker-days']//th[@class='datepicker-switch']"));
+        while (!monthYear.getText().contains("February 1971")) {
+        	driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/div/a[1]")).click();
+        }
+        WebElement day = driver.findElement(By.xpath("//div[@class='datepicker-days']//td[text()='7']"));
+        day.click();
         driver.findElement(By.id("datepicker2")).sendKeys("07/02/1971");
+        } finally {
+        	driver.findElement(By.id("datepicker2")).sendKeys("07/02/1971");
         try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
@@ -76,6 +93,6 @@ public class App
         Actions actions = new Actions(driver);
         actions.clickAndHold(slider).moveByOffset(600, 0).release().perform();
         }
-        
+        } 
     }
 }

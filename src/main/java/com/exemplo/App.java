@@ -17,7 +17,7 @@ public class App
     public static void main( String[] args )
     {
     	System.setProperty("webdriver.chrome.driver", "C:/geckodriver/chromedriver.exe");
-    	ChromeOptions options = new ChromeOptions();
+       	ChromeOptions options = new ChromeOptions();
     	options.addArguments("--host-resolver-rules=MAP localhost 8080");
     	WebDriver driver = new ChromeDriver();
     	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
